@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BURGER — O seu próximo pedido começa aqui</title>
+
+<meta
+  name="description"
+  content="Uma experiência moderna para quem leva hambúrguer a sério."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f1eb;
+    color:#111;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+button,
+a{
+    font:inherit;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
+
+:root{
+    --bg:#f4f1eb;
+    --black:#111111;
+    --white:#ffffff;
+    --red:#e51b23;
+    --yellow:#ffc928;
+    --gray:#d9d6cf;
+    --dark-gray:#292929;
+    --radius:28px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 5vw;
+
+    mix-blend-mode:multiply;
+}
+
+.logo{
+    font-family:"Archivo Black",sans-serif;
+    font-size:25px;
+    letter-spacing:-1.5px;
+}
+
+.nav{
+    display:flex;
+    gap:28px;
+    align-items:center;
+}
+
+.nav a{
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.nav a:hover{
+    opacity:.55;
+}
+
+.header-button{
+    background:#111;
+    color:white;
+    padding:13px 20px;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.header-button:hover{
+    transform:scale(1.05);
+}
+
+.menu-button{
+    display:none;
+    border:0;
+    background:#111;
+    color:#fff;
+    border-radius:50%;
+    width:45px;
+    height:45px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    padding:120px 5vw 60px;
+}
+
+.hero-content{
+    width:100%;
+    max-width:1450px;
+    position:relative;
+    z-index:2;
+}
+
+.hero-small{
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:30px;
+}
+
+.hero-title{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(70px,12vw,190px);
+    line-height:.78;
+    letter-spacing:-8px;
+
+    max-width:1100px;
+}
+
+.hero-title span{
+    display:block;
+}
+
+.hero-title .outline{
+    color:transparent;
+    -webkit-text-stroke:2px #111;
+}
+
+.hero-burger{
+    position:absolute;
+
+    width:min(48vw,620px);
+
+    right:3%;
+    top:50%;
+
+    transform:
+        translateY(-45%)
+        rotate(-8deg);
+
+    z-index:1;
+
+    filter:
+        drop-shadow(0 35px 35px rgba(0,0,0,.25));
+
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.hero:hover .hero-burger{
+    transform:
+        translateY(-48%)
+        rotate(-3deg)
+        scale(1.03);
+}
+
+.hero-description{
+    position:absolute;
+    right:7%;
+    bottom:10%;
+
+    width:250px;
+
+    font-size:14px;
+    line-height:1.5;
+    font-weight:600;
+}
+
+.hero-arrow{
+    position:absolute;
+    bottom:35px;
+    left:5vw;
+
+    font-size:28px;
+
+    animation:arrow 1.5s infinite;
+}
+
+@keyframes arrow{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(8px);
+    }
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    background:#111;
+    color:#fff;
+
+    padding:150px 5vw;
+}
+
+.intro-grid{
+    max-width:1450px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+}
+
+.section-label{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:.65;
+}
+
+.intro-title{
+    margin-top:35px;
+
+    font-family:"Archivo Black",sans-serif;
+    font-size:clamp(55px,8vw,125px);
+    line-height:.84;
+    letter-spacing:-5px;
+}
+
+.intro-text{
+    max-width:460px;
+
+    align-self:end;
+
+    font-size:20px;
+    line-height:1.5;
+}
+
+.intro-text strong{
+    color:var(--yellow);
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    background:var(--yellow);
+    color:#111;
+
+    overflow:hidden;
+
+    padding:24px 0;
+
+    white-space:nowrap;
+}
+
+.marquee-track{
+    display:inline-flex;
+
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(30px,5vw,70px);
+
+    letter-spacing:-2px;
+
+    padding-right:45px;
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu{
+    padding:150px 5vw;
+}
+
+.menu-top{
+    max-width:1450px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+
+    margin-bottom:70px;
+}
+
+.menu-title{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(60px,9vw,130px);
+
+    line-height:.8;
+
+    letter-spacing:-6px;
+}
+
+.menu-subtitle{
+    max-width:300px;
+
+    font-size:15px;
+    line-height:1.5;
+    font-weight:600;
+}
+
+.products{
+    max-width:1450px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+}
+
+.product{
+    position:relative;
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    min-height:620px;
+
+    cursor:pointer;
+
+    transition:
+        transform .5s,
+        box-shadow .5s;
+}
+
+.product:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.13);
+}
+
+.product-image{
+    height:420px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:50px;
+
+    overflow:hidden;
+}
+
+.product:nth-child(1) .product-image{
+    background:#dedbd4;
+}
+
+.product:nth-child(2) .product-image{
+    background:#f0d27d;
+}
+
+.product:nth-child(3) .product-image{
+    background:#b9c9a7;
+}
+
+.product:nth-child(4) .product-image{
+    background:#d8a06d;
+}
+
+.product-image img{
+    width:90%;
+    height:90%;
+
+    object-fit:contain;
+
+    transition:
+        transform .6s;
+}
+
+.product:hover img{
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+.product-info{
+    padding:28px;
+}
+
+.product-number{
+    font-size:11px;
+    font-weight:800;
+    opacity:.5;
+}
+
+.product-name{
+    margin-top:8px;
+
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:45px;
+
+    letter-spacing:-2px;
+}
+
+.product-description{
+    margin-top:8px;
+
+    max-width:400px;
+
+    font-size:14px;
+    line-height:1.5;
+}
+
+.product-button{
+    position:absolute;
+
+    right:25px;
+    bottom:25px;
+
+    width:48px;
+    height:48px;
+
+    border:0;
+    border-radius:50%;
+
+    background:#111;
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.product-button:hover{
+    transform:rotate(45deg);
+}
+
+
+/* =========================================================
+   FEATURE
+========================================================= */
+
+.feature{
+    background:#e51b23;
+    color:white;
+
+    padding:150px 5vw;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.feature-inner{
+    max-width:1450px;
+    margin:auto;
+
+    position:relative;
+    z-index:2;
+}
+
+.feature-small{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.feature-title{
+    margin-top:30px;
+
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(70px,12vw,180px);
+
+    line-height:.78;
+
+    letter-spacing:-8px;
+
+    max-width:1100px;
+}
+
+.feature-title span{
+    display:block;
+}
+
+.feature-text{
+    margin-top:70px;
+
+    max-width:470px;
+
+    font-size:20px;
+    line-height:1.5;
+}
+
+.feature-circle{
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:#ffc928;
+
+    right:-150px;
+    bottom:-250px;
+}
+
+
+/* =========================================================
+   UNIDADES
+========================================================= */
+
+.locations{
+    padding:150px 5vw;
+}
+
+.locations-inner{
+    max-width:1450px;
+    margin:auto;
+}
+
+.locations-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+
+    margin-bottom:80px;
+}
+
+.locations-title{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(60px,9vw,130px);
+
+    line-height:.8;
+
+    letter-spacing:-6px;
+}
+
+.locations-description{
+    max-width:350px;
+
+    font-size:15px;
+    line-height:1.5;
+}
+
+.locations-list{
+    border-top:1px solid #111;
+}
+
+.location{
+    border-bottom:1px solid #111;
+
+    padding:25px 0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.location:hover{
+    padding-left:20px;
+    padding-right:20px;
+
+    background:#111;
+    color:white;
+}
+
+.location-name{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(30px,4vw,60px);
+
+    letter-spacing:-2px;
+}
+
+.location-arrow{
+    font-size:30px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final{
+    background:#111;
+    color:#fff;
+
+    padding:170px 5vw;
+
+    text-align:center;
+}
+
+.final-small{
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:800;
+}
+
+.final-title{
+    margin:40px auto;
+
+    max-width:1200px;
+
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:clamp(70px,12vw,180px);
+
+    line-height:.78;
+
+    letter-spacing:-8px;
+}
+
+.final-button{
+    display:inline-flex;
+
+    align-items:center;
+    gap:15px;
+
+    background:#ffc928;
+    color:#111;
+
+    padding:18px 30px;
+
+    border-radius:50px;
+
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.final-button:hover{
+    transform:scale(1.08);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#111;
+    color:#fff;
+
+    border-top:1px solid #333;
+
+    padding:40px 5vw;
+}
+
+.footer-top{
+    max-width:1450px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-logo{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:35px;
+}
+
+.footer-links{
+    display:flex;
+    gap:25px;
+}
+
+.footer-links a{
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+
+    opacity:.7;
+}
+
+.footer-links a:hover{
+    opacity:1;
+}
+
+.footer-bottom{
+    max-width:1450px;
+    margin:60px auto 0;
+
+    display:flex;
+    justify-content:space-between;
+
+    font-size:11px;
+
+    opacity:.5;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:3000;
+
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    background:#f4f1eb;
+
+    width:min(600px,100%);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    position:relative;
+}
+
+.modal-close{
+    position:absolute;
+
+    right:20px;
+    top:20px;
+
+    width:42px;
+    height:42px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#111;
+    color:#fff;
+
+    cursor:pointer;
+}
+
+.modal h2{
+    font-family:"Archivo Black",sans-serif;
+
+    font-size:45px;
+
+    letter-spacing:-2px;
+
+    margin-bottom:20px;
+}
+
+.modal p{
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.modal-order{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.modal-order button{
+    border:0;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    background:#111;
+    color:#fff;
+
+    cursor:pointer;
+
+    font-weight:800;
+}
+
+.modal-order button:hover{
+    background:#e51b23;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+
+    transition:
+        opacity .9s,
+        transform .9s;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    .header{
+        padding:15px 20px;
+    }
+
+    .nav{
+        position:fixed;
+
+        top:75px;
+        left:20px;
+        right:20px;
+
+        background:#111;
+        color:#fff;
+
+        border-radius:20px;
+
+        padding:25px;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        transform:translateY(-20px);
+        opacity:0;
+        pointer-events:none;
+
+        transition:.3s;
+    }
+
+    .nav.open{
+        transform:translateY(0);
+        opacity:1;
+        pointer-events:auto;
+    }
+
+    .nav a{
+        font-size:16px;
+    }
+
+    .header-button{
+        display:none;
+    }
+
+    .menu-button{
+        display:block;
+    }
+
+    .hero{
+        min-height:900px;
+        align-items:flex-start;
+
+        padding-top:150px;
+    }
+
+    .hero-title{
+        font-size:19vw;
+        letter-spacing:-4px;
+    }
+
+    .hero-burger{
+        width:95vw;
+
+        right:-10%;
+        top:55%;
+
+        opacity:.95;
+    }
+
+    .hero-description{
+        bottom:8%;
+        left:5vw;
+        right:auto;
+    }
+
+    .intro{
+        padding:100px 20px;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .intro-title{
+        font-size:18vw;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product{
+        min-height:560px;
+    }
+
+    .product-image{
+        height:350px;
+    }
+
+    .menu,
+    .locations{
+        padding:100px 20px;
+    }
+
+    .menu-top,
+    .locations-heading{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:30px;
+    }
+
+    .menu-title,
+    .locations-title{
+        font-size:18vw;
+    }
+
+    .feature{
+        padding:100px 20px;
+    }
+
+    .feature-title{
+        font-size:18vw;
+        letter-spacing:-5px;
+    }
+
+    .final{
+        padding:120px 20px;
+    }
+
+    .final-title{
+        font-size:18vw;
+        letter-spacing:-5px;
+    }
+
+    .footer-top{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:30px;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <a href="#" class="logo">
+        BURGER.
+    </a>
+
+    <nav class="nav" id="nav">
+
+        <a href="#menu">Cardápio</a>
+
+        <a href="#experiencia">
+            Nosso jeito
+        </a>
+
+        <a href="#unidades">
+            Unidades
+        </a>
+
+        <a href="#menu">
+            Favoritos
+        </a>
+
+        <a href="#pedido">
+            Fazer pedido
+        </a>
+
+    </nav>
+
+    <a href="#menu" class="header-button">
+        PEDIR AGORA
+    </a>
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Abrir menu"
+    >
+        ☰
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            HAMBÚRGUER DE VERDADE • DO SEU JEITO
+        </div>
+
+        <h1 class="hero-title">
+
+            <span>DEU</span>
+
+            <span class="outline">
+                FOME?
+            </span>
+
+            <span>
+                BORA.
+            </span>
+
+        </h1>
+
+    </div>
+
+
+    <img
+        class="hero-burger"
+        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=90"
+        alt="Hambúrguer artesanal"
+    >
+
+
+    <div class="hero-description">
+
+        Um burger bem montado,
+        ingredientes que combinam
+        e aquela vontade de pedir
+        mais um.
+
+    </div>
+
+
+    <div class="hero-arrow">
+        ↓
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro reveal" id="experiencia">
+
+    <div class="intro-grid">
+
+        <div>
+
+            <div class="section-label">
+                PRAZER, SOMOS O BURGER
+            </div>
+
+            <h2 class="intro-title">
+
+                O SIMPLES.
+                <br>
+                BEM FEITO.
+
+            </h2>
+
+        </div>
+
+
+        <div class="intro-text">
+
+            <p>
+
+                Pão macio.
+                Carne suculenta.
+                Queijo derretido.
+
+                <br><br>
+
+                Sem transformar um burger
+                em uma complicação.
+
+                <br><br>
+
+                A ideia é simples:
+                <strong>
+                    você escolhe o seu e aproveita.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<section class="marquee">
+
+    <div class="marquee-track">
+
+        <span>
+            BURGER • BATATA • MOLHO • REFRI • BURGER • BATATA • MOLHO • REFRI •
+        </span>
+
+        <span>
+            BURGER • BATATA • MOLHO • REFRI • BURGER • BATATA • MOLHO • REFRI •
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CARDÁPIO
+===================================================== -->
+
+<section class="menu" id="menu">
+
+    <div class="menu-top reveal">
+
+        <div>
+
+            <div class="section-label">
+                ESCOLHA O SEU
+            </div>
+
+            <h2 class="menu-title">
+                CARDÁPIO.
+            </h2>
+
+        </div>
+
+
+        <p class="menu-subtitle">
+
+            Dos clássicos aos favoritos,
+            escolha o burger que combina
+            com a sua fome.
+
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- BIG MAC -->
+
+        <article
+            class="product reveal"
+            onclick="openProduct(
+                'Big Mac',
+                'Dois hambúrgueres, queijo, alface, molho especial, cebola e picles.'
+            )"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85"
+                    alt="Hambúrguer"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-number">
+                    01 / CLÁSSICO
+                </div>
+
+                <h3 class="product-name">
+                    BIG MAC
+                </h3>
+
+                <p class="product-description">
+
+                    Uma combinação clássica
+                    para quem quer começar
+                    pelo favorito.
+
+                </p>
+
+            </div>
+
+            <button class="product-button">
+                ↗
+            </button>
+
+        </article>
+
+
+        <!-- QUARTERÃO -->
+
+        <article
+            class="product reveal"
+            onclick="openProduct(
+                'Quarterão',
+                'Hambúrguer de carne bovina, queijo, cebola, picles, ketchup e mostarda.'
+            )"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=85"
+                    alt="Cheeseburger"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-number">
+                    02 / CARNE
+                </div>
+
+                <h3 class="product-name">
+                    QUARTERÃO
+                </h3>
+
+                <p class="product-description">
+
+                    Para quem gosta de um
+                    burger mais marcante
+                    e cheio de sabor.
+
+                </p>
+
+            </div>
+
+            <button class="product-button">
+                ↗
+            </button>
+
+        </article>
+
+
+        <!-- MCNÍFICO -->
+
+        <article
+            class="product reveal"
+            onclick="openProduct(
+                'McNífico Bacon',
+                'Carne bovina, queijo, bacon e ingredientes selecionados em uma combinação intensa.'
+            )"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=900&q=85"
+                    alt="Hambúrguer com bacon"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-number">
+                    03 / BACON
+                </div>
+
+                <h3 class="product-name">
+                    BACON
+                </h3>
+
+                <p class="product-description">
+
+                    Mais crocância,
+                    mais intensidade
+                    e aquela combinação
+                    que sempre funciona.
+
+                </p>
+
+            </div>
+
+            <button class="product-button">
+                ↗
+            </button>
+
+        </article>
+
+
+        <!-- MCCHICKEN -->
+
+        <article
+            class="product reveal"
+            onclick="openProduct(
+                'McChicken',
+                'Sanduíche de frango empanado com ingredientes frescos e molho cremoso.'
+            )"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=900&q=85"
+                    alt="Sanduíche de frango"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-number">
+                    04 / FRANGO
+                </div>
+
+                <h3 class="product-name">
+                    CHICKEN
+                </h3>
+
+                <p class="product-description">
+
+                    Crocante por fora,
+                    macio por dentro
+                    e pronto para matar
+                    a fome.
+
+                </p>
+
+            </div>
+
+            <button class="product-button">
+                ↗
+            </button>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURE
+===================================================== -->
+
+<section class="feature reveal">
+
+    <div class="feature-inner">
+
+        <div class="feature-small">
+            NÃO É SÓ SOBRE COMER.
+        </div>
+
+        <h2 class="feature-title">
+
+            É SOBRE
+            <span>
+                A PRIMEIRA
+            </span>
+            MORDIDA.
+
+        </h2>
+
+        <p class="feature-text">
+
+            Tem dias em que tudo que você
+            precisa é de um bom hambúrguer,
+            uma batata e alguns minutos
+            sem pensar em mais nada.
+
+        </p>
+
+    </div>
+
+    <div class="feature-circle"></div>
+
+</section>
+
+
+<!-- =====================================================
+     ACOMPANHAMENTOS
+===================================================== -->
+
+<section class="menu">
+
+    <div class="menu-top reveal">
+
+        <div>
+
+            <div class="section-label">
+                PRA ACOMPANHAR
+            </div>
+
+            <h2 class="menu-title">
+                MAIS UM?
+            </h2>
+
+        </div>
+
+        <p class="menu-subtitle">
+
+            Porque burger sozinho
+            às vezes não resolve.
+
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <article
+            class="product reveal"
+            onclick="openProduct(
+                'McFritas',
+                'Batatas crocantes para acompanhar o seu pedido.'
+            )"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85"
+                    alt="Batatas fritas"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-number">
+                    01 / ACOMPANHAMENTO
+                </div>
+
+                <h3 class="product-name">
+                    FRITAS
+                </h3>
+
+                <p class="product-description">
+                    Crocantes, douradas e perfeitas
+                    para dividir.
+                </p>
+
+            </div>
+
+            <button class="product-button">
+                ↗
+            </button>
+
+        </article>
+
+
+        <article
+            class="product reveal"
+            onclick="openProduct(
+                'Nuggets',
+                'Porções de nuggets para deixar o pedido ainda melhor.'
+            )"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=900&q=85"
+                    alt="Nuggets"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-number">
+                    02 / ACOMPANHAMENTO
+                </div>
+
+                <h3 class="product-name">
+                    NUGGETS
+                </h3>
+
+                <p class="product-description">
+                    Pequenos, crocantes
+                    e fáceis de compartilhar.
+                </p>
+
+            </div>
+
+            <button class="product-button">
+                ↗
+            </button>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     UNIDADES
+===================================================== -->
+
+<section class="locations" id="unidades">
+
+    <div class="locations-inner">
+
+        <div class="locations-heading reveal">
+
+            <div>
+
+                <div class="section-label">
+                    ONDE ENCONTRAR
+                </div>
+
+                <h2 class="locations-title">
+                    PERTO<br>
+                    DE VOCÊ.
+                </h2>
+
+            </div>
+
+            <p class="locations-description">
+
+                Escolha uma região e encontre
+                o lugar mais próximo para
+                matar a fome.
+
+            </p>
+
+        </div>
+
+
+        <div class="locations-list">
+
+            <div
+                class="location reveal"
+                onclick="chooseLocation('Rio de Janeiro')"
+            >
+
+                <div class="location-name">
+                    RIO DE JANEIRO
+                </div>
+
+                <div class="location-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+
+            <div
+                class="location reveal"
+                onclick="chooseLocation('São Paulo')"
+            >
+
+                <div class="location-name">
+                    SÃO PAULO
+                </div>
+
+                <div class="location-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+
+            <div
+                class="location reveal"
+                onclick="chooseLocation('Brasília')"
+            >
+
+                <div class="location-name">
+                    BRASÍLIA
+                </div>
+
+                <div class="location-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+
+            <div
+                class="location reveal"
+                onclick="chooseLocation('Minas Gerais')"
+            >
+
+                <div class="location-name">
+                    MINAS GERAIS
+                </div>
+
+                <div class="location-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PEDIDO
+===================================================== -->
+
+<section class="final" id="pedido">
+
+    <div class="final-small">
+        PRONTO?
+    </div>
+
+    <h2 class="final-title">
+
+        ENTÃO
+        <br>
+        BORA
+        <br>
+        PEDIR.
+
+    </h2>
+
+    <a
+        href="#menu"
+        class="final-button"
+    >
+        ESCOLHER MEU BURGER
+        <span>↗</span>
+    </a>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-top">
+
+        <div class="footer-logo">
+            BURGER.
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#menu">
+                Cardápio
+            </a>
+
+            <a href="#experiencia">
+                Nosso jeito
+            </a>
+
+            <a href="#unidades">
+                Unidades
+            </a>
+
+            <a href="#pedido">
+                Pedir
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 BURGER.
+        </span>
+
+        <span>
+            FEITO PARA QUEM AMA BURGER.
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeProduct()"
+        >
+            ×
+        </button>
+
+        <h2 id="modalTitle">
+            Produto
+        </h2>
+
+        <p id="modalDescription">
+            Descrição
+        </p>
+
+        <div class="modal-order">
+
+            <button onclick="orderProduct()">
+                PEDIR AGORA
+            </button>
+
+            <button onclick="closeProduct()">
+                CONTINUAR VENDO
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const nav =
+    document.getElementById("nav");
+
+menuButton.addEventListener("click", () => {
+
+    nav.classList.toggle("open");
+
+});
+
+
+document.querySelectorAll(".nav a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        nav.classList.remove("open");
+
+    });
+
+});
+
+
+/* =========================================================
+   REVEAL AO ROLAR
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document.querySelectorAll(".reveal")
+.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   PARALLAX DO BURGER
+========================================================= */
+
+const burger =
+    document.querySelector(".hero-burger");
+
+window.addEventListener("scroll", () => {
+
+    if(!burger) return;
+
+    const scroll =
+        window.scrollY;
+
+    if(scroll < window.innerHeight){
+
+        burger.style.transform =
+            `translateY(calc(-45% + ${scroll * .08}px))
+             rotate(${-8 + scroll * .015}deg)`;
+
+    }
+
+});
+
+
+/* =========================================================
+   MODAL DE PRODUTO
+========================================================= */
+
+const modal =
+    document.getElementById("modal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalDescription =
+    document.getElementById("modalDescription");
+
+
+function openProduct(name, description){
+
+    modalTitle.textContent =
+        name;
+
+    modalDescription.textContent =
+        description;
+
+    modal.classList.add("active");
+
+}
+
+
+function closeProduct(){
+
+    modal.classList.remove("active");
+
+}
+
+
+modal.addEventListener("click", event => {
+
+    if(event.target === modal){
+
+        closeProduct();
+
+    }
+
+});
+
+
+/* =========================================================
+   PEDIDO
+========================================================= */
+
+function orderProduct(){
+
+    alert(
+        "Área de pedidos pronta para receber seu sistema de delivery."
+    );
+
+}
+
+
+/* =========================================================
+   LOCALIZAÇÃO
+========================================================= */
+
+function chooseLocation(location){
+
+    alert(
+        "Você escolheu: " + location
+    );
+
+}
+
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener("keydown", event => {
+
+    if(event.key === "Escape"){
+
+        closeProduct();
+
+        nav.classList.remove("open");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
